@@ -1,7 +1,6 @@
 package token_test
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/cdvelop/token"
@@ -26,7 +25,7 @@ func TestBuildUniqueKey(t *testing.T) {
 		uniqueKeys[key] = struct{}{}
 	}
 
-	fmt.Println(uniqueKeys)
+	// fmt.Println(uniqueKeys)
 }
 
 func BenchmarkBuildUniqueKey(b *testing.B) {

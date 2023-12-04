@@ -20,7 +20,7 @@ func TestTokenEncryptDecrypt(t *testing.T) {
 		t.Run(testName, func(t *testing.T) {
 
 			// Crear una instancia de Token
-			token := &token.Token{EncryptionKey: token.BuildUniqueKey(16)}
+			token := token.AddCipherAdapter(token.BuildUniqueKey(16))
 
 			// Encriptar el contenido
 			encrypted_content, err := token.Encrypt(c.Content)

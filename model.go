@@ -1,6 +1,6 @@
 package token
 
 // Token es una estructura que contiene una clave para encriptar
-type Token struct {
-	EncryptionKey string
+type config struct {
+	encryption_key string
 }

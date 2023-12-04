@@ -5,8 +5,10 @@ import (
 )
 
 // Encrypt
-func (t *Token) Encrypt(content string) (out, err string) {
+func (t *config) Encrypt(content string) (out, err string) {
 	const this = "Encrypt error "
+
+	// fmt.Println("PRUEBA LLAVE SETEADA:", t.encryption_key)
 
 	bytes, err := compress([]byte(content))
 	if err != "" {
@@ -18,7 +20,7 @@ func (t *Token) Encrypt(content string) (out, err string) {
 }
 
 // Decrypt
-func (t *Token) Decrypt(content string) (out, err string) {
+func (t *config) Decrypt(content string) (out, err string) {
 	const this = "Decrypt error: "
 
 	bytes, er := hex.DecodeString(content)

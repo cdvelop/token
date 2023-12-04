@@ -7,14 +7,14 @@ import (
 )
 
 // Encrypt cifra el contenido y genera una suma de verificación simple.
-func (t *Token) EncryptOLD(content string) (out string) {
+func (t *config) EncryptOLD(content string) (out string) {
 	// Convertir clave a bytes
-	keyBytes := []byte(t.EncryptionKey)
+	keyBytes := []byte(t.encryption_key)
 	contentBytes := []byte(content)
 
 	encryptedSha256KeyWithContent := sha256.Sum256(append(keyBytes, contentBytes...))
 	// Paso 1: Cifrar contenido con la clave
-	// encryptedSha256KeyWithContent := sha256.Sum256([]byte(t.EncryptionKey + content))
+	// encryptedSha256KeyWithContent := sha256.Sum256([]byte(t.encryption_key + content))
 
 	// Paso 2: Suma de verificación (SHA-256 como ejemplo)
 	hash := sha256.New()
@@ -31,7 +31,7 @@ func (t *Token) EncryptOLD(content string) (out string) {
 	// Paso 5: Concatenar el contenido cifrado y la suma de verificación
 	return encryptedKeyWithContentHEX + verificationHex
 }
-func (t *Token) DecryptOLD(content string) (out, err string) {
+func (t *config) DecryptOLD(content string) (out, err string) {
 	const this = "Decrypt error: "
 
 	// Verificar si la longitud del contenido es suficiente para contener la suma de verificación
@@ -65,7 +65,7 @@ func (t *Token) DecryptOLD(content string) (out, err string) {
 	}
 
 	// Paso 2: Descifrar el contenido sin la clave
-	outBytes := encryptedSha256KeyWithContent[len(t.EncryptionKey)/2:]
+	outBytes := encryptedSha256KeyWithContent[len(t.encryption_key)/2:]
 
 	// Paso 1: Convertir a cadena el contenido descifrado
 	out = string(outBytes)

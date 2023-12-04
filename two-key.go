@@ -1,5 +1,7 @@
 package token
 
+var global_key = ""
+
 type TwoKeys struct {
 	// SizeKey uint8// default 16
 	execution_count int
@@ -7,7 +9,7 @@ type TwoKeys struct {
 }
 
 // retorna "main.encryption_key":"1fgd3..." en ejecución impar cambia la llave
-func (k *TwoKeys) EncryptionKey() map[string]string {
+func (k *TwoKeys) LdFlagsEncryptionKey() map[string]string {
 	// Incrementar el contador
 	k.execution_count++
 
@@ -18,7 +20,7 @@ func (k *TwoKeys) EncryptionKey() map[string]string {
 	}
 
 	return map[string]string{
-		"main.encryption_key": k.encryption_key,
+		"github.com/cdvelop/token.global_key": k.encryption_key,
 	}
 
 }

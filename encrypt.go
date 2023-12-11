@@ -5,12 +5,12 @@ import (
 )
 
 // Encrypt
-func (t *config) Encrypt(content string) (out, err string) {
+func (t *config) Encrypt(content []byte) (out, err string) {
 	const this = "Encrypt error "
 
 	// fmt.Println("PRUEBA LLAVE SETEADA:", t.encryption_key)
 
-	bytes, err := compress([]byte(content))
+	bytes, err := compress(content)
 	if err != "" {
 		return "", this + err
 	}

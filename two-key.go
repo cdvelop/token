@@ -9,7 +9,7 @@ type TwoKeys struct {
 }
 
 // retorna "main.encryption_key":"1fgd3..." en ejecución impar cambia la llave
-func (k *TwoKeys) LdFlagsEncryptionKey() map[string]string {
+func (k *TwoKeys) AddTokenFlagsPublicEncryptionKey() map[string]string {
 	// Incrementar el contador
 	k.execution_count++
 

@@ -23,7 +23,7 @@ func TestTokenEncryptDecrypt(t *testing.T) {
 			token := token.AddCipherAdapter(token.BuildUniqueKey(16))
 
 			// Encriptar el contenido
-			encrypted_content, err := token.Encrypt(c.Content)
+			encrypted_content, err := token.Encrypt([]byte(c.Content))
 			if err != "" {
 				t.Fatal(err)
 				return
